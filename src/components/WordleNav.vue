@@ -18,6 +18,7 @@ export default {};
   border-bottom: 1px solid #fff;
   .game-title {
     line-height: 2.4rem;
+    font-family: system-ui;
     font-size: 2.4rem;
     font-weight: 700;
     color: #fff;

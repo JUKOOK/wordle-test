@@ -8,13 +8,14 @@ class WordleManager {
     this.answerChars = this.answer.split("");
   }
 
-  checkAnswer(inputString) {
-    const inputChars = inputString.split("");
+  getResults(inputChars) {
     return inputChars.map((char, idx) => {
-      let result = "not-include";
-      if (this.answerChars[idx] === char) result = "currect-position";
-      else if (this.answer.includes(char)) result = "other-position";
-      return result;
+      if (char === "") return "not-include";
+      else {
+        if (this.answerChars[idx] === char) return "currect-position";
+        else if (this.answer.includes(char)) return "other-position";
+        else return "not-include";
+      }
     });
   }
 }

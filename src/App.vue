@@ -1,6 +1,8 @@
 <template>
   <WordleNav />
-  <WordleFive />
+  <div class="wordle-board">
+    <WordleFive />
+  </div>
 </template>
 
 <script>
@@ -15,3 +17,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.wordle-board {
+  height: calc(100% - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
