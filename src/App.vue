@@ -1,25 +1,17 @@
 <template>
+  <WordleNav />
   <WordleFive />
 </template>
 
 <script>
+import WordleNav from "./components/WordleNav.vue";
 import WordleFive from "./views/WordleFive.vue";
 
 export default {
   name: "App",
   components: {
+    WordleNav,
     WordleFive,
   },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
