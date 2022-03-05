@@ -1,4 +1,4 @@
-const WORD5LIST = [
+const WORD5 = [
   "figma",
   "files",
   "apple",
@@ -207,5 +207,5 @@ const WORD5LIST = [
 ];
 
 export default {
-  WORD5LIST,
+  WORD5,
 };

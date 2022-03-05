@@ -1,6 +1,10 @@
+import { getRandomIndex } from "@/utils";
+import WORDLIST from "../stuff/word-list";
+
 class WordleManager {
   constructor() {
-    this.answer = "apple";
+    const randomIdx = getRandomIndex(WORDLIST.WORD5.length);
+    this.answer = WORDLIST.WORD5[randomIdx];
     this.answerChars = this.answer.split("");
   }
 
