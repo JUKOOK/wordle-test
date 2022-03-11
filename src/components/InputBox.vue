@@ -46,7 +46,7 @@ export default {
       emit("char-cleared");
     }
     function submitAnswer() {
-      if (props.box.slot === 5) emit("submit-answer");
+      emit("submit-answer");
     }
 
     return { inputBoxClass, filterKey, onInput, clearInput, submitAnswer };

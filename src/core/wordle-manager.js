@@ -1,10 +1,23 @@
-import { getRandomIndex } from "@/utils";
+import { getRandomIndex } from "../utils";
 import WORDLIST from "../stuff/word-list";
 
+const getWordList = (letters) => {
+  switch (letters) {
+    case 4:
+      return WORDLIST.WORD4;
+    case 5:
+      return WORDLIST.WORD5;
+    case 6:
+      return WORDLIST.WORD6;
+  }
+};
+
 class WordleManager {
-  constructor() {
-    const randomIdx = getRandomIndex(WORDLIST.WORD5.length);
-    this.answer = WORDLIST.WORD5[randomIdx];
+  constructor(letters) {
+    const wordList = getWordList(letters);
+    const randomIdx = getRandomIndex(wordList.length);
+    this.letters = letters;
+    this.answer = wordList[randomIdx];
     this.answerChars = this.answer.split("");
   }
 

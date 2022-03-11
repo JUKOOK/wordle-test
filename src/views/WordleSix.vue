@@ -21,7 +21,7 @@ import InputLine from "../components/InputLine.vue";
 import AnswerSheet from "../components/AnswerSheet.vue";
 
 const ROWS = 5;
-const COLUMNS = 5;
+const COLUMNS = 6;
 
 export default {
   components: {
@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 .wordle-five {
-  width: 416px; // 64 * 5 + 24 * 4
+  width: 504px; // 64 * 6 + 24 * 5
 }
 
 .wordle-tiles {

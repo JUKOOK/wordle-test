@@ -6,7 +6,7 @@
       :box="box"
       @char-updated="(char) => updateBoxChar(idx, char)"
       @char-cleared="clearBoxChar(idx)"
-      @submit-answer="submitAnswer"
+      @submit-answer="submitAnswer(idx)"
     />
   </div>
 </template>
@@ -20,7 +20,7 @@ import InputBox from "./InputBox.vue";
  * slot 구성
  * [
  *   {
- *     slot: Number // 1 ~ 5
+ *     slot: Number // 1 ~ columns
  *     char: String // one Character of InputBox
  *     disabled: Boolean // true or false
  *     result: String // 'currect-position', 'other-position', 'not-include'
@@ -36,6 +36,10 @@ export default {
       type: Object,
       requred: true,
     },
+    columns: {
+      type: Number,
+      requred: true,
+    },
   },
   components: {
     InputBox,
@@ -43,7 +47,7 @@ export default {
   setup(props, { emit }) {
     const initializeBoxes = () => {
       const arr = [];
-      for (let slot = 1; slot <= 5; slot++) {
+      for (let slot = 1; slot <= props.columns; slot++) {
         arr.push({
           slot,
           char: "",
@@ -63,7 +67,8 @@ export default {
     function clearBoxChar(idx) {
       inputBoxes[idx].char = "";
     }
-    function submitAnswer() {
+    function submitAnswer(idx) {
+      if (props.columns !== idx + 1) return;
       const submitChars = inputBoxes.map((box) => box.char);
       const results = props.wordle.getResults(submitChars);
       for (const idx in inputBoxes) {
