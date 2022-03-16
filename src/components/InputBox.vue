@@ -12,45 +12,38 @@
   </div>
 </template>
 
-<script>
-import { computed } from "vue";
+<script setup>
+import { defineProps, defineEmits, computed } from "vue";
 
-export default {
-  props: {
-    box: {
-      type: Object,
-      requred: true,
-    },
-  },
-  setup(props, { emit }) {
-    const inputBoxClass = computed(() => {
-      let cls = ["input-box"];
-      if (props.box.disabled) cls.push("disabled");
-      cls.push(props.box.result);
-      return cls;
-    });
+const props = defineProps({
+  box: Object,
+});
+const emit = defineEmits(["updated", "cleared", "submit"]);
 
-    function filterKey(e) {
-      const isAlphabet = e.keyCode >= 97 && e.keyCode <= 122;
-      const alreadyFilled = props.box.char.length >= 1;
-      if (!isAlphabet || alreadyFilled) e.preventDefault();
-    }
-    function onInput(e) {
-      if (e.isComposing) clearInput();
-      else if (e.data) updateInput(e.data);
-    }
-    function updateInput(c) {
-      emit("char-updated", c);
-    }
-    function clearInput() {
-      emit("char-cleared");
-    }
-    function submitAnswer() {
-      emit("submit-answer");
-    }
+const inputBoxClass = computed(() => {
+  let cls = ["input-box"];
+  if (props.box.disabled) cls.push("disabled");
+  cls.push(props.box.result);
+  return cls;
+});
 
-    return { inputBoxClass, filterKey, onInput, clearInput, submitAnswer };
-  },
+const filterKey = (e) => {
+  const isAlphabet = e.keyCode >= 97 && e.keyCode <= 122;
+  const alreadyFilled = props.box.char.length >= 1;
+  if (!isAlphabet || alreadyFilled) e.preventDefault();
+};
+const onInput = (e) => {
+  if (e.isComposing) clearInput();
+  else if (e.data) updateInput(e.data);
+};
+const updateInput = (c) => {
+  emit("updated", c);
+};
+const clearInput = () => {
+  emit("cleared");
+};
+const submitAnswer = () => {
+  emit("submit");
 };
 </script>
 
@@ -82,15 +75,15 @@ export default {
   &.disabled input {
     cursor: default;
   }
-  &.currect-position input {
+  &.correct input {
     background-color: rgb(83, 141, 78);
     border-color: rgb(83, 141, 78);
   }
-  &.other-position input {
+  &.other input {
     background-color: rgb(181, 159, 59);
     border-color: rgb(181, 159, 59);
   }
-  &.not-include input {
+  &.none input {
     background-color: #302f2f;
     border-color: #302f2f;
   }

@@ -12,33 +12,28 @@
   </nav>
 </template>
 
-<script>
+<script setup>
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
 
-export default {
-  setup() {
-    const router = useRouter();
-    const route = useRoute();
-    const firstTo = computed(() => {
-      return {
-        next: route.name === "wordleFour" ? "wordleFive" : "wordleFour",
-        text: route.name === "wordleFour" ? "5글자" : "4글자",
-      };
-    });
-    const secondTo = computed(() => {
-      return {
-        next: route.name === "wordleSix" ? "wordleFive" : "wordleSix",
-        text: route.name === "wordleSix" ? "5글자" : "6글자",
-      };
-    });
+const router = useRouter();
+const route = useRoute();
 
-    function routePage(toName) {
-      router.push({ name: toName });
-    }
+const firstTo = computed(() => {
+  return {
+    next: route.name === "wordleFour" ? "wordleFive" : "wordleFour",
+    text: route.name === "wordleFour" ? "5글자" : "4글자",
+  };
+});
+const secondTo = computed(() => {
+  return {
+    next: route.name === "wordleSix" ? "wordleFive" : "wordleSix",
+    text: route.name === "wordleSix" ? "5글자" : "6글자",
+  };
+});
 
-    return { firstTo, secondTo, routePage };
-  },
+const routePage = (toName) => {
+  router.push({ name: toName });
 };
 </script>
 

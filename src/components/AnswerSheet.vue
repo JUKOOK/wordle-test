@@ -6,26 +6,15 @@
   </div>
 </template>
 
-<script>
-import { reactive } from "vue";
+<script setup>
+import { defineProps, reactive } from "vue";
 
-export default {
-  props: {
-    wordle: {
-      type: Object,
-      required: true,
-    },
-    isGameOver: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  setup(props) {
-    const characters = reactive(props.wordle.answerChars);
+const props = defineProps({
+  wordle: Object,
+  isGameOver: Boolean,
+});
 
-    return { characters };
-  },
-};
+const characters = reactive(props.wordle.answerChars);
 </script>
 
 <style lang="scss" scoped>

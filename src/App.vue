@@ -1,20 +1,18 @@
 <template>
   <WordleNav />
   <div class="wordle-board">
+    <!-- <WordleFour /> -->
     <!-- <WordleFive /> -->
+    <!-- <WordleSix /> -->
     <router-view />
   </div>
 </template>
 
-<script>
+<script setup>
 import WordleNav from "./components/WordleNav.vue";
-
-export default {
-  name: "App",
-  components: {
-    WordleNav,
-  },
-};
+// import WordleFour from "./views/WordleFour.vue";
+// import WordleFive from "./views/WordleFive.vue";
+// import WordleSix from "./views/WordleSix.vue";
 </script>
 
 <style lang="scss" scoped>

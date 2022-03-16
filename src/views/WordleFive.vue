@@ -13,7 +13,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "vue";
 import WordleManager from "../core/wordle-manager.js";
 
@@ -23,25 +23,15 @@ import AnswerSheet from "../components/AnswerSheet.vue";
 const ROWS = 5;
 const COLUMNS = 5;
 
-export default {
-  components: {
-    InputLine,
-    AnswerSheet,
-  },
-  setup() {
-    const wordle = new WordleManager(COLUMNS);
-    const isGameOver = ref(false);
+const wordle = new WordleManager(COLUMNS);
+const isGameOver = ref(false);
 
-    function checkGameOver(idx, isSuccess) {
-      if (idx === ROWS || isSuccess) {
-        isGameOver.value = true;
-      }
-      // 원래 위치에 전달
-      // 다음 요소 활성화
-    }
-
-    return { ROWS, COLUMNS, wordle, isGameOver, checkGameOver };
-  },
+const checkGameOver = (idx, isSuccess) => {
+  if (idx === ROWS || isSuccess) {
+    isGameOver.value = true;
+  }
+  // 원래 위치에 전달
+  // 다음 요소 활성화
 };
 </script>
 

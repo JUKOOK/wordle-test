@@ -23,11 +23,11 @@ class WordleManager {
 
   getResults(inputChars) {
     return inputChars.map((char, idx) => {
-      if (char === "") return "not-include";
+      if (char === "") return "none";
       else {
-        if (this.answerChars[idx] === char) return "currect-position";
-        else if (this.answer.includes(char)) return "other-position";
-        else return "not-include";
+        if (this.answerChars[idx] === char) return "correct";
+        else if (this.answer.includes(char)) return "other";
+        else return "none";
       }
     });
   }
