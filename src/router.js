@@ -4,17 +4,17 @@ const routes = [
   { path: "/", redirect: { name: "wordleFive" } },
   {
     name: "wordleFour",
-    path: "/four-letter",
+    path: "/four-letters",
     component: () => import("./views/WordleFour.vue"),
   },
   {
     name: "wordleFive",
-    path: "/five-letter",
+    path: "/five-letters",
     component: () => import("./views/WordleFive.vue"),
   },
   {
     name: "wordleSix",
-    path: "/six-letter",
+    path: "/six-letters",
     component: () => import("./views/WordleSix.vue"),
   },
 ];
