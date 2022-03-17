@@ -1,5 +1,6 @@
 <template>
   <div class="input-line">
+    <span class="obtainable-point">{{ obtainablePoint }}점</span>
     <InputBox
       v-for="(box, idx) in inputBoxes"
       :key="idx + 1"
@@ -18,6 +19,8 @@ import InputBox from "./InputBox.vue";
 
 const props = defineProps({
   wordle: Object,
+  rowNumber: Number,
+  rows: Number,
   columns: Number,
 });
 const emit = defineEmits(["result-displayed"]);
@@ -47,6 +50,7 @@ const initializeBoxes = (col) => {
 };
 
 const inputBoxes = reactive(initializeBoxes(props.columns));
+const obtainablePoint = props.rows - props.rowNumber + 1;
 
 const updateBoxChar = (idx, char) => {
   if (inputBoxes[idx].char.length) return;
@@ -72,5 +76,15 @@ const submitAnswer = (idx) => {
 .input-line {
   display: flex;
   justify-content: space-between;
+  position: relative;
+}
+
+.input-line .obtainable-point {
+  position: absolute;
+  font-size: 28px;
+  color: #fff;
+  top: 50%;
+  left: -56px;
+  transform: translate(0, -50%);
 }
 </style>
