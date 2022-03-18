@@ -28,14 +28,14 @@ import DisplayPoint from "../components/DisplayPoint.vue";
 const ROWS = 5;
 const COLUMNS = 6;
 
-const pointStore = usePointStore();
+const { increasePoint } = usePointStore();
 const wordle = new WordleManager(COLUMNS);
 const isGameOver = ref(false);
 
 const checkGameOver = (idx, isSuccess) => {
   if (idx === ROWS || isSuccess) {
     isGameOver.value = true;
-    pointStore.increasePoint(ROWS - idx + 1);
+    increasePoint(ROWS - idx + 1);
   }
   // 원래 위치에 전달
   // 다음 요소 활성화

@@ -1,5 +1,6 @@
 <template>
   <div class="answer-sheet" :class="{ unvailed: isGameOver }">
+    <!-- <span class="character" v-for="char in props.wordle.answerChars" :key="char"> -->
     <span class="character" v-for="char in characters" :key="char">
       {{ char }}</span
     >
@@ -7,14 +8,15 @@
 </template>
 
 <script setup>
-import { defineProps, reactive } from "vue";
+import { defineProps, ref } from "vue";
 
 const props = defineProps({
   wordle: Object,
   isGameOver: Boolean,
 });
 
-const characters = reactive(props.wordle.answerChars);
+const characters = ref(props.wordle.answerChars);
+// const characters = reactive(props.wordle.answerChars);
 </script>
 
 <style lang="scss" scoped>

@@ -10,8 +10,9 @@
 import { usePointStore } from "../store";
 // import { storeToRefs } from "pinia";
 
-const pointStore = usePointStore();
-// const { point } = storeToRefs(pointStore);
+const pointStore = usePointStore(); // 기본적으로 pointStore.~ 는 모두 반응형을 가지고 온다.
+// const { point } = pointStore; // destruction하면 반응형을 잃는다(변수의 경우) 변화가 없다면야..
+// const { point } = storeToRefs(pointStore); // storeToRefs 를 쓰면 destruction하면서 반응형을 새로 붙일 수 있다.
 </script>
 
 <style lang="scss" scoped>

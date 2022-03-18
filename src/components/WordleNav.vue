@@ -13,11 +13,11 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed } from "vue"; // computed -> 기본적으로 반응형
 import { useRouter, useRoute } from "vue-router";
 
-const router = useRouter();
-const route = useRoute();
+const router = useRouter(); // this.$router.push
+const route = useRoute(); // this.$route.name
 
 const firstTo = computed(() => {
   return {
